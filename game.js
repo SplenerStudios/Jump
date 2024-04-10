@@ -2,7 +2,6 @@ kaboom()
 
 
 // carregar sprites
-loadRoot("sprites/")
 loadSprite("backgroud", "backgroud.png")
 loadSprite("logo", "logo.png")
 loadSprite("menu", "menuButton.png")
