@@ -2,6 +2,7 @@ kaboom()
 
 
 // carregar sprites
+loadRoot("sprites/")
 loadSprite("backgroud", "backgroud.png")
 loadSprite("logo", "logo.png")
 loadSprite("menu", "menuButton.png")
@@ -49,28 +50,13 @@ scene("menu", () => {
     pos(width()-70, height()-50),
   ])
   
-  // botão jogar
-  const btnStart = add([
-    rect(300,50, {radius: 8}),
-    pos(center().x, 60),
-    color(251,223,0),
-    anchor("center"),
-    outline(2),
-    area()
-  ])
-  
-  btnStart.add([
-    text("JOGAR"),
-    pos(0,3),
-    anchor("center"),
-    color(0,0,0),
-  ])
   
   //botão das configurações
   const btnCfg = add([
     rect(300,50, {radius: 8}),
-    pos(center().x, btnStart.height+70),
+    pos(center()),
     color(251,223,0),
+    scale(1.2),
     anchor("center"),
     outline(2),
     area()
@@ -84,11 +70,30 @@ scene("menu", () => {
     
   ])
   
+    // botão jogar
+  const btnStart = add([
+    rect(300,50, {radius: 8}),
+    pos(center().x, btnCfg.pos.y - 70),
+    color(251,223,0),
+    scale(1.2),
+    anchor("center"),
+    outline(2),
+    area()
+  ])
+  
+  btnStart.add([
+    text("JOGAR"),
+    pos(0,3),
+    anchor("center"),
+    color(0,0,0),
+  ])
+  
   // botão da pontuação
   const btnScore = add([
     rect(300,50, {radius: 8}),
-    pos(center().x, btnStart.height*2+80),
+    pos(center().x, btnCfg.pos.y + 70),
     color(251,223,0),
+    scale(1.2),
     anchor("center"),
     outline(2),
     area()
@@ -193,10 +198,12 @@ scene("settings", () => {
     anchor("center"),
   ])
   
+  
+  // tela de configurações
   const settingsScreen = add([
-    rect(500, 290, {radius: 20}),
-    pos(center().x, 10),
-    anchor("top"),
+    rect(500, height() -20, {radius: 20}),
+    pos(center()),
+    anchor("center"),
     color(3,33,66)
   ])
   
@@ -239,6 +246,7 @@ scene("score", () => {
     pos(width()-70, height()-50),
   ])
   
+  // imprimir pontuação total
   add([
     text("PONTUAÇÃO: "+localStorage.getItem("score")),
     pos(center()),
